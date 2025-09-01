@@ -3,9 +3,10 @@ local last = hs.pasteboard.changeCount()
 
 -- Toast constants
 local TOAST_DURATION = 1.0
-local TOAST_COLOR_OK = { green = 0.2, alpha = 0.95 }
-local TOAST_COLOR_FAIL = { red = 0.7, alpha = 0.95 }
-local TOAST_TEXT_COLOR = { white = 1 }
+local TOAST_COLOR_OK = { white = 0.88, alpha = 0.95 }
+local TOAST_COLOR_FAIL = { red = 0.7, alpha = 0.7 }
+local TOAST_TEXT_COLOR_OK = { white = 0 }
+local TOAST_TEXT_COLOR_FAIL = { white = 1 }
 local TOAST_SOUND_OK = "Tink"
 local TOAST_SOUND_FAIL = "Basso"
 local TOAST_OK_W, TOAST_OK_H = 80, 28
@@ -100,7 +101,7 @@ toastAtMouse = function(text, ok, secs)
       type = "text",
       text = text,
       textSize = 12,
-      textColor = TOAST_TEXT_COLOR,
+      textColor = ok and TOAST_TEXT_COLOR_OK or TOAST_TEXT_COLOR_FAIL,
       textAlignment = "center",
       frame = { x = 8, y = 6, w = w - 16, h = h - 12 }
     }
