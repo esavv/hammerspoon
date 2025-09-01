@@ -6,6 +6,8 @@ local TOAST_DURATION = 1.0
 local TOAST_COLOR_OK = { green = 0.2, alpha = 0.95 }
 local TOAST_COLOR_FAIL = { red = 0.7, alpha = 0.95 }
 local TOAST_TEXT_COLOR = { white = 1 }
+local TOAST_SOUND_OK = "Tink"
+local TOAST_SOUND_FAIL = "Basso"
 local TOAST_OK_W, TOAST_OK_H = 80, 28
 local TOAST_FAIL_W, TOAST_FAIL_H = 100, 28
 
@@ -105,7 +107,7 @@ toastAtMouse = function(text, ok, secs)
   )
   canvas:show()
 
-  local name = ok and "Pop" or "Basso"
+  local name = ok and TOAST_SOUND_OK or TOAST_SOUND_FAIL
   local snd = hs.sound.getByName(name)
   if snd then snd:play() end
 
